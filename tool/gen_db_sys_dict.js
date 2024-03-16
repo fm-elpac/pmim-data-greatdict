@@ -207,7 +207,7 @@ async function 处理(kv, 数据, 库) {
   await kv.set(["pmim_db", "v"], {
     pmim: PMIM_VERSION,
     deno_version: Deno.version,
-    n: "胖喵拼音内置数据库 (332 万, pyim-greatdict)",
+    n: "胖喵拼音内置数据库 (332 万词, pyim-greatdict)",
     _last_update: new Date().toISOString(),
   });
   // 标记没有词的频率数据
