@@ -26,7 +26,7 @@ jobs:
         fileName: "pmim_sys-0.db.zst"
     - run: mv pmim_sys-0.db.zst tmp/
     - run: cd tmp && zstd -d pmim_sys-0.db.zst
-    - run: mv pmim_sys-0.db pmim_sys.db
+    - run: cd tmp && mv pmim_sys-0.db pmim_sys.db
 
     # pyim-greatdict.pyim
     - run: zstd -d pyim-greatdict.pyim.zst
@@ -34,9 +34,8 @@ jobs:
 
     - run: cd tmp && cat pyim-greatdict.pyim | deno run -A --unstable-kv ../tool/gen_db_sys_dict.js pmim_sys.db
 
-    # `pmim_sys.db.zst`
-    - run: zstd -19 tmp/pmim_sys.db -o tmp/pmim_sys.db.zst
+    # `pmim_sys.db`
     - uses: actions/upload-artifact@v4
       with:
         name: pmim_sys.db
-        path: tmp/pmim_sys.db.zst
+        path: tmp/pmim_sys.db
